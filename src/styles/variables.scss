@@ -1,0 +1,70 @@
+// ============================================================
+// TCIC Device Check SDK - 样式变量定义
+// ============================================================
+
+// 主题色
+$dc-primary: #165dff;
+$dc-primary-light: #4080ff;
+$dc-primary-dark: #0e42d2;
+
+// 状态色
+$dc-success: #00b42a;
+$dc-success-secondary: #e8ffea; // 淡绿色背景
+$dc-warning: #ff7d00;
+$dc-warning-secondary: #fff7e8; // 淡橙色背景
+$dc-error: #f53f3f;
+$dc-error-secondary: #ffece8; // 淡红色背景
+$dc-info: #165dff;
+
+// 中性色 - 亮色主题
+$dc-bg-light: #f7f8fa;
+$dc-bg-secondary-light: #ffffff;
+$dc-text-primary-light: #1d2129;
+$dc-text-secondary-light: #86909c;
+$dc-text-placeholder-light: #c9cdd4;
+$dc-border-light: #e5e6eb;
+$dc-progress-bg-light: #e5e6eb;
+
+// 中性色 - 暗色主题
+$dc-bg-dark: #1a1a1a;
+$dc-bg-secondary-dark: #2c2c2c;
+$dc-text-primary-dark: #ebebeb;
+$dc-text-secondary-dark: #a8a8a8;
+$dc-text-placeholder-dark: #606060;
+$dc-border-dark: #3a3a3a;
+
+// 间距
+$dc-spacing-xs: 4px;
+$dc-spacing-sm: 8px;
+$dc-spacing-md: 16px;
+$dc-spacing-lg: 24px;
+$dc-spacing-xl: 32px;
+$dc-spacing-xxl: 48px;
+$dc-spacing-xxxl: 64px;
+
+// 圆角
+$dc-radius-sm: 4px;
+$dc-radius-md: 8px;
+$dc-radius-lg: 12px;
+
+// 字体
+$dc-font-size-xs: 12px;
+$dc-font-size-sm: 14px;
+$dc-font-size-md: 16px;
+$dc-font-size-lg: 18px;
+$dc-font-size-xl: 24px;
+
+// 阴影
+$dc-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+$dc-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+$dc-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+// 动画
+$dc-transition-fast: 0.15s ease;
+$dc-transition-normal: 0.25s ease;
+$dc-transition-slow: 0.35s ease;
+
+// Z-index 层级
+$dc-z-dropdown: 100;
+$dc-z-modal: 200;
+$dc-z-tooltip: 300;

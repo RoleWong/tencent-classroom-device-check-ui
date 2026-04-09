@@ -1,0 +1,219 @@
+/**
+ * 步骤组件公共样式
+ *
+ * 提供所有检测步骤组件通用的样式类：
+ * - .dc-step-panel: 步骤面板容器
+ * - .dc-step-title: 步骤标题
+ * - .dc-step-hint: 步骤提示信息
+ * - .dc-step-content: 步骤内容区域
+ * - .dc-step-actions: 步骤操作按钮区域
+ * - .dc-step-form: 表单布局
+ *
+ * 使用方式：
+ * 在组件的 <style> 中引入：
+ * @import './step-common.scss';
+ */
+
+// 步骤面板容器
+.dc-step-panel {
+    display: flex;
+    flex-direction: column;
+    padding: $dc-spacing-lg;
+    min-height: 360px;
+}
+
+// 步骤标题
+.dc-step-title {
+    margin: 0 0 $dc-spacing-md;
+    font-size: $dc-font-size-lg;
+    font-weight: 600;
+    color: var(--dc-text-primary);
+}
+
+// 步骤提示信息
+.dc-step-hint {
+    display: flex;
+    align-items: center;
+    gap: $dc-spacing-sm;
+    margin-bottom: $dc-spacing-xl;
+    color: var(--dc-text-secondary);
+    font-size: $dc-font-size-sm;
+
+    &__icon {
+        color: var(--dc-primary);
+    }
+}
+
+// 步骤内容区域
+.dc-step-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: $dc-spacing-lg;
+}
+
+// 步骤操作按钮区域
+.dc-step-actions {
+    display: flex;
+    justify-content: center;
+    gap: $dc-spacing-lg;
+    margin-top: $dc-spacing-xl;
+    padding-top: $dc-spacing-lg;
+}
+
+// 步骤按钮基础样式
+.dc-step-btn {
+    min-width: 200px;
+    height: 48px;
+    font-size: $dc-font-size-md;
+    border-radius: $dc-radius-sm;
+
+    // 次要按钮（白色背景）
+    &--secondary {
+        background-color: var(--dc-bg-secondary);
+        border-color: var(--dc-border);
+        color: var(--dc-text-primary);
+
+        &:hover {
+            background-color: var(--dc-bg);
+            border-color: var(--dc-border);
+        }
+    }
+
+    // 主要按钮（主题色背景）
+    &--primary {
+        background-color: var(--dc-primary);
+        border-color: var(--dc-primary);
+        color: #fff;
+
+        &:hover {
+            background-color: var(--dc-primary-light);
+            border-color: var(--dc-primary-light);
+        }
+    }
+}
+
+// 表单布局
+.dc-step-form {
+    display: flex;
+    flex-direction: column;
+    gap: $dc-spacing-lg;
+
+    // 表单项
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: $dc-spacing-lg;
+    }
+
+    // 标签
+    &__label {
+        flex-shrink: 0;
+        width: 80px;
+        font-size: $dc-font-size-sm;
+        color: var(--dc-text-secondary);
+    }
+
+    // 控件容器
+    &__control {
+        flex: 1;
+        max-width: 400px;
+    }
+}
+
+// 无设备状态
+.dc-no-device {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $dc-spacing-xl;
+    color: var(--dc-text-secondary);
+
+    &__icon {
+        font-size: 48px;
+        color: var(--dc-warning, #e6a23c);
+        margin-bottom: $dc-spacing-md;
+    }
+
+    &__text {
+        font-size: $dc-font-size-lg;
+        font-weight: 500;
+        color: var(--dc-text-primary);
+        margin-bottom: $dc-spacing-sm;
+    }
+
+    &__hint {
+        font-size: $dc-font-size-sm;
+        color: var(--dc-text-secondary);
+    }
+}
+
+// ================================
+// 移动端适配（屏幕宽度 <= 480px）
+// ================================
+@media screen and (max-width: 480px) {
+    // 步骤提示信息
+    .dc-step-hint {
+        margin-bottom: $dc-spacing-md;
+    }
+
+    // 步骤面板容器减少内边距
+    .dc-step-panel {
+        padding: $dc-spacing-md;
+        min-height: auto;
+    }
+
+    // 步骤操作按钮区域
+    .dc-step-actions {
+        gap: $dc-spacing-md;
+        margin-top: $dc-spacing-md;
+    }
+
+    // 步骤按钮自适应宽度
+    .dc-step-btn {
+        min-width: 0;
+        flex: 1;
+        padding: 0 $dc-spacing-md;
+    }
+
+    // 表单布局
+    .dc-step-form {
+        gap: $dc-spacing-md;
+
+        // 表单项改为垂直布局
+        &__item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: $dc-spacing-sm;
+        }
+
+        // 标签宽度自动
+        &__label {
+            width: auto;
+        }
+    }
+}
+
+// ================================
+// 音量条移动端适配（屏幕宽度 <= 480px）
+// 音量条的样式在各组件中定义，这里提供通用的覆盖样式
+// ================================
+@media screen and (max-width: 480px) {
+    .dc-volume-bar {
+        max-width: 100% !important;
+        width: 100%;
+
+        &__bars {
+            flex: 1;
+            gap: 4px;
+        }
+
+        &__bar {
+            width: auto !important;
+            flex: 1;
+            min-width: 16px;
+            height: 20px;
+        }
+    }
+}
