@@ -452,27 +452,12 @@ function DeviceCheckPage() {
 
 ## 二次开发指南
 
-### 环境准备
-
-```bash
-# 克隆仓库
-git clone <repo-url>
-cd tic-device-check-monorepo
-
-# 安装依赖（使用 pnpm）
-pnpm install
-
-# 启动 UI 包开发服务器（含热重载）
-pnpm --filter @tencent-classroom/device-check-ui dev
-
-# 或在 monorepo 根目录启动所有包
-pnpm dev
-```
+请通过 [GitHub 仓库](https://github.com/RoleWong/tencent-classroom-device-check-ui), 克隆本 UI 库源码至本地, 通过本地引用的方式, 在您的 web 项目中, 使用该库.
 
 ### 项目结构
 
 ```
-packages/ui/
+tencent-classroom-device-check-ui
 ├── src/
 │   ├── index.ts                  # 主入口，导出 TCICDeviceCheck 类
 │   ├── types/
