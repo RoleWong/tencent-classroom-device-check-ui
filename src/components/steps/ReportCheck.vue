@@ -615,18 +615,21 @@ export default {
 
             const pref = result.domainPreference;
 
-            // 检查域名是否切换到备用
-            if (pref.classCdnUsedBackup) {
-                fixes.push(this.$t('report.fix.cdnSwitched'));
+            // 检查课堂域名是否切换到备用
+            if (pref.classDomain) {
+                const cnPrimary = 'https://class.qcloudclass.com';
+                const intlPrimary = 'https://www.tencentclass.com';
+                if (pref.classDomain !== cnPrimary && pref.classDomain !== intlPrimary) {
+                    fixes.push(this.$t('report.fix.cdnSwitched'));
+                }
             }
-            if (pref.classApiUsedBackup) {
-                fixes.push(this.$t('report.fix.apiSwitched'));
-            }
-            if (pref.whiteboardResUsedBackup) {
-                fixes.push(this.$t('report.fix.whiteboardResSwitched'));
-            }
-            if (pref.whiteboardApiUsedBackup) {
-                fixes.push(this.$t('report.fix.whiteboardApiSwitched'));
+            // 检查资源域名是否切换到备用
+            if (pref.resDomain) {
+                const cnPrimary = 'https://tcic-prod-1257307760.qcloudclass.com';
+                const intlPrimary = 'https://res.tencentclass.com';
+                if (pref.resDomain !== cnPrimary && pref.resDomain !== intlPrimary) {
+                    fixes.push(this.$t('report.fix.cdnSwitched'));
+                }
             }
 
             return fixes;
@@ -1253,10 +1256,17 @@ export default {
             if (result.domainPreference) {
                 const pref = result.domainPreference;
                 const switches = [];
-                if (pref.classCdnUsedBackup) switches.push(this.$t('export.network.cdnDomain'));
-                if (pref.classApiUsedBackup) switches.push(this.$t('export.network.classroomApiDomain'));
-                if (pref.whiteboardResUsedBackup) switches.push(this.$t('export.network.whiteboardRes'));
-                if (pref.whiteboardApiUsedBackup) switches.push(this.$t('export.network.whiteboardApi'));
+                const cnClassPrimary = 'https://class.qcloudclass.com';
+                const intlClassPrimary = 'https://www.tencentclass.com';
+                const cnResPrimary = 'https://tcic-prod-1257307760.qcloudclass.com';
+                const intlResPrimary = 'https://res.tencentclass.com';
+
+                if (pref.classDomain && pref.classDomain !== cnClassPrimary && pref.classDomain !== intlClassPrimary) {
+                    switches.push(this.$t('export.network.cdnDomain'));
+                }
+                if (pref.resDomain && pref.resDomain !== cnResPrimary && pref.resDomain !== intlResPrimary) {
+                    switches.push(this.$t('export.network.cdnDomain'));
+                }
 
                 if (switches.length > 0) {
                     lines.push(`  ${this.$t('export.network.domainSwitch')}:`);

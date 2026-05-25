@@ -30,11 +30,18 @@ export interface TCICDeviceCheckOptions {
  * 只包含域名偏好和设备ID，用于拼接到URL中传递给课堂主项目
  */
 export interface FinalResult {
-    // 域名偏好设置（扁平化）
-    classCdnUsedBackup?: boolean;
-    classApiUsedBackup?: boolean;
-    whiteboardResUsedBackup?: boolean;
-    whiteboardApiUsedBackup?: boolean;
+    // 地域体系（cn / sg）
+    region?: string;
+    // 课堂域名选优结果
+    classDomain?: string;
+    // 课堂 API 选优结果
+    classApi?: string;
+    // 白板资源选优结果
+    whiteboardRes?: string;
+    // 白板接口选优结果
+    whiteboardApi?: string;
+    // 自定义资源域名选优结果
+    resDomain?: string;
     // 通过检测的设备ID
     speakerId?: string;
     microphoneId?: string;

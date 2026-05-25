@@ -82,12 +82,20 @@ export interface WorkflowSummary {
  * 只包含域名偏好设置和通过检测的设备 ID
  */
 export interface FinishResult {
-    // 域名偏好设置（来自网络检测）
+    // 域名偏好设置（来自网络检测，直接输出选优结论）
     domainPreference?: {
-        classCdnUsedBackup?: boolean;
-        classApiUsedBackup?: boolean;
-        whiteboardResUsedBackup?: boolean;
-        whiteboardApiUsedBackup?: boolean;
+        // 当前地域体系
+        region?: string;
+        // 课堂域名选优结果
+        classDomain?: string;
+        // 课堂 API 选优结果
+        classApi?: string;
+        // 白板资源选优结果
+        whiteboardRes?: string;
+        // 白板接口选优结果
+        whiteboardApi?: string;
+        // 自定义资源域名选优结果
+        resDomain?: string;
     };
     // 通过检测的扬声器设备 ID
     speakerId?: string;
@@ -451,21 +459,17 @@ export class WorkflowManager {
 
         const result: FinishResult = {};
 
-        // 1. 提取域名偏好设置（从网络检测结果中）
+        // 1. 提取域名偏好设置（从网络检测结果中，直接输出选优结论）
         const networkResult = this.results['network'] as Record<string, unknown> | undefined;
         if (networkResult?.domainPreference) {
-            const domainPref = networkResult.domainPreference as Record<string, unknown>;
-
-            // 判断是否使用了备用域名（通过比较选中的域名是否包含 'backup' 或其他备用域名特征）
+            const domainPref = networkResult.domainPreference as Record<string, string>;
             result.domainPreference = {
-                classCdnUsedBackup: typeof domainPref.classCdn === 'string' &&
-                    domainPref.classCdn.includes('class-backup.qcloudclass.com'),
-                classApiUsedBackup: typeof domainPref.classApi === 'string' &&
-                    domainPref.classApi.includes('tcic-os-api.qcloudclass.com'),
-                whiteboardResUsedBackup: typeof domainPref.whiteboardRes === 'string' &&
-                    domainPref.whiteboardRes.includes('tic-res-1259648581.cos.accelerate.myqcloud.com'),
-                whiteboardApiUsedBackup: typeof domainPref.whiteboardApi === 'string' &&
-                    domainPref.whiteboardApi.includes('api.my-imcloud.com')
+                region: domainPref.region,
+                classDomain: domainPref.classDomain,
+                classApi: domainPref.classApi,
+                // whiteboardRes: domainPref.whiteboardRes,
+                // whiteboardApi: domainPref.whiteboardApi,
+                resDomain: domainPref.resDomain
             };
         }
 

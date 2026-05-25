@@ -13,14 +13,13 @@ export default defineConfig({
         dts({
             insertTypesEntry: true,
             outDir: 'dist',
-            include: ['src/**/*.ts', 'src/**/*.vue']
+            include: ['src/**/*.ts', 'src/**/*.vue'],
+            rollupTypes: true
         })
     ],
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, './src'),
-            // 开发/构建时直接引用 sdk 源码，无需预先构建
-            '@tencent-classroom/device-check-sdk': path.resolve(__dirname, '../sdk/src/index.ts')
+            '@': path.resolve(__dirname, './src')
         }
     },
     css: {
@@ -40,7 +39,6 @@ export default defineConfig({
         },
         rollupOptions: {
             // 外部化处理，不打包进库的依赖
-            external: ['vue', 'element-ui'],
             output: {
                 // 使用 named 导出，避免 default export 警告
                 exports: 'named',

@@ -324,10 +324,12 @@ export default class TCICDeviceCheck {
         // 将 FinishResult 转换为扁平化的 FinalResult
         const finalResult: FinalResult = {
             // 扁平化域名偏好设置
-            classCdnUsedBackup: result.domainPreference?.classCdnUsedBackup,
-            classApiUsedBackup: result.domainPreference?.classApiUsedBackup,
-            whiteboardResUsedBackup: result.domainPreference?.whiteboardResUsedBackup,
-            whiteboardApiUsedBackup: result.domainPreference?.whiteboardApiUsedBackup,
+            region: result.domainPreference?.region,
+            classDomain: result.domainPreference?.classDomain,
+            classApi: result.domainPreference?.classApi,
+            whiteboardRes: result.domainPreference?.whiteboardRes,
+            whiteboardApi: result.domainPreference?.whiteboardApi,
+            resDomain: result.domainPreference?.resDomain,
             // 设备ID
             speakerId: result.speakerId,
             microphoneId: result.microphoneId,
